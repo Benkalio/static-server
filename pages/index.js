@@ -1,22 +1,24 @@
 import fs from 'fs/promises';
-import path from 'path'
+import path from 'path';
+import Link from 'next/link';
 
 function HomePage(props) {
   const { products } = props;
 
   return (
     <ul>
-      {products.map((product) => <li key={product.id}>{product.title}</li>)}
+      {
+        products.map(
+        (product) => (
+            <li key={product.id}>
+              <Link href={`/${product.id}`}>
+                {product.title}
+              </Link>
+            </li>)
+        )
+      }
     </ul>
   )
-
-  return (
-    <ul>
-      <li>Product 1</li>
-      <li>Product 2</li>
-      <li>Product 3</li>
-    </ul>
-  );
 }
 
 //STATIC PAGE FOR PRE-GENERATION
